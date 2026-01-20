@@ -8,14 +8,14 @@ namespace Renderer {
         GLuint vertexShaderID;
         if (!createShader(vertexShader, GL_VERTEX_SHADER, vertexShaderID))
         {
-            std::cerr << "ERROR::VERTEX SHADER:: Compile time error\n" << std::endl;
+            std::cerr << "ERROR::SHADER PROGRAM::VERTEX SHADER:: Compile time error\n" << std::endl;
             return;
         }
 
         GLuint fragmentShaderID;
         if (!createShader(fragmentShader, GL_FRAGMENT_SHADER, fragmentShaderID))
         {
-            std::cerr << "ERROR::FRAGMENT SHADER:: Compile time error\n" << std::endl;
+            std::cerr << "ERROR::SHADER PROGRAM::FRAGMENT SHADER:: Compile time error\n" << std::endl;
             glDeleteShader(vertexShaderID);
             return;
         }
@@ -32,7 +32,7 @@ namespace Renderer {
         {
             GLchar infoLog[1024];
             glGetProgramInfoLog(ID, 1024, nullptr, infoLog); /**/
-            std::cerr << "ERROR::SHADER PROGRAM::Link time error \n" << infoLog << std::endl;
+            std::cerr << "ERROR::SHADER PROGRAM::LINK::Link time error \n" << infoLog << std::endl;
         }
         else
         {
@@ -58,7 +58,7 @@ namespace Renderer {
             GLchar infoLog[1024];
             glGetShaderInfoLog(shaderID, 1024, nullptr, infoLog);
 
-            std::cerr << "ERROR::SHADER::Compile time error \n" << infoLog << std::endl;
+            std::cerr << "ERROR::SHADER PROGRAM::SHADER::Compile time error \n" << infoLog << std::endl;
             return false;
         }
 
